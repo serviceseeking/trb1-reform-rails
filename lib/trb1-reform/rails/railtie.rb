@@ -2,17 +2,17 @@ module Trb1
   module Reform
     module Rails
       class Railtie < ::Rails::Railtie
-        config.reform = ActiveSupport::OrderedOptions.new
+        config.trb1_reform = ActiveSupport::OrderedOptions.new
 
-        initializer "reform.form_extensions", after: :load_config_initializers do
-          validations = config.reform.validations || :active_model
+        initializer "trb1.reform.form_extensions", after: :load_config_initializers do
+          validations = config.trb1_reform.validations || :active_model
 
           if validations == :active_model
             active_model!
           elsif validations == :dry
             dry!
           else
-            warn "[Reform::Rails] No validation backend set. Please do so via `config.reform.validations = :active_model`."
+            warn "[Trb1::Reform::Rails] No validation backend set. Please do so via `config.trb1.reform.validations = :active_model`."
           end
         end
 
